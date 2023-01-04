@@ -18,3 +18,18 @@
   --white: hsl(0, 0%, 100%);
 
 }
+
+body {
+  background-color: var(--magnolia);
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem;
+  height: 100vh;
+
+  font-family: 'Ubuntu', sans-serif;
+}
+
+main {
+  margin-top: 5.25rem;
+}

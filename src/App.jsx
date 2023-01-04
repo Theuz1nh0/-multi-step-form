@@ -1,44 +1,79 @@
 // components
-import Steps from "./components/Steps"
 import YourInfo from "./components/Step01"
 import YourPlan from "./components/Step02"
 import PickAddOns from "./components/Step03"
 import FinishingUp from "./components/Step04"
+import Thanks from "./components/Step05"
+import StepInformations from "./components/StepInformations"
+
+//styles
+import './styles/App.css'
 
 // hooks
-import { headerContent } from "./hooks/HeaderText"
-import { toggle } from "./hooks/ToggleStep"
+import { texts } from "./hooks/texts"
+import { useForm } from "./hooks/useForm"
 
 function App() {
-    const { headerText } = headerContent()
+    const { headerText, arrayInformationsStep } = texts()
 
     // get the pages of the steps
-    const arraySteps = [
+    const formComponents = [
         <YourInfo />,
         <YourPlan />,
         <PickAddOns />,
-        <FinishingUp />
+        <FinishingUp />,
+        <Thanks />
     ]
 
-    const { step, changeStep } = toggle(arraySteps)
+    const { currentStep, currentComponent, changeStep, isLastStep, isFarstStep } = useForm(formComponents)
+
+    // to keep the 'Next Step' button in the same place
+    const styleToActions = isFarstStep ? 'end' : 'space-between'
 
     return (
         <div>
             <aside>
-                <Steps />
+                <div className='step-background'>
+                    <div className="step-bar">
+                        {arrayInformationsStep.map(step => <StepInformations key={step.num} array={step} step={currentStep} />)}
+                    </div>
+                </div>
             </aside>
-            <main>
-                <div>
-                    <h1>{headerText[step].h1}</h1>
-                    <p>{headerText[step].p}</p>
+
+            <main className="main-container">
+                <div className="header-container">
+                    <h1>
+                        {currentStep + 1 >= formComponents.length ? null : headerText[currentStep].h1}
+                    </h1>
+
+                    <p>
+                        {currentStep + 1 >= formComponents.length ? null : headerText[currentStep].p}
+                    </p>
                 </div>
-                <div>
-                    {arraySteps[step]}
-                </div>
-                <div>
-                    <button disabled={step === 0} onClick={() => changeStep(step - 1)}>Go Back</button>
-                    <button onClick={() => changeStep(step + 1)}>Netx Step</button>
-                </div>
+                <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
+                    <div className="inputs-container">{currentComponent}</div>
+                    <div className="actions" style={{ justifyContent: styleToActions }}>
+                        {!isFarstStep && (
+                            <button
+                                type="button"
+                                className="btn-go-back"
+                                onClick={() => changeStep(currentStep - 1)}
+                            >
+                                <span>Go Back</span>
+                            </button>
+                        )}
+
+                        {!isLastStep ? (
+                            <button type="submit" className="btn-next-step">
+                                <span>Next Step</span>
+                            </button>
+                        ) : (
+                            <button type="button" className="btn-next-step">
+                                <span>Next Step</span>
+                            </button>
+                        )}
+                    </div>
+                </form>
             </main>
         </div>
     )
