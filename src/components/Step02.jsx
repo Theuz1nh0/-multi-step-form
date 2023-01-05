@@ -4,6 +4,11 @@ import { useState } from 'react';
 // hooks
 import { texts } from '../hooks/texts'
 
+// images
+import iconArcade from '../assets/images/icon-arcade.svg'
+import iconAdvanced from '../assets/images/icon-advanced.svg'
+import iconPro from '../assets/images/icon-pro.svg'
+
 // styles
 import '../styles/Step02.css'
 
@@ -41,7 +46,7 @@ function YourPlan() {
                 </div>
                 <div className="radio-content">
                     <div>
-                        <img src="./src/assets/images/icon-arcade.svg" alt="icon arcade" />
+                        <img src={iconArcade} alt="icon arcade" />
                     </div>
                     <div className="plan-informations">
                         <h2>Arcade</h2>
@@ -57,7 +62,7 @@ function YourPlan() {
                 </div>
                 <div className="radio-content">
                     <div>
-                        <img src="./src/assets/images/icon-advanced.svg" alt="icon advanced" />
+                        <img src={iconAdvanced} alt="icon advanced" />
                     </div>
                     <div className="plan-informations">
                         <h2>Advanced</h2>
@@ -73,7 +78,7 @@ function YourPlan() {
                 </div>
                 <div className="radio-content">
                     <div>
-                        <img src="./src/assets/images/icon-pro.svg" alt="icon pro" />
+                        <img src={iconPro} alt="icon pro" />
                     </div>
                     <div className="plan-informations">
                         <h2>Pro</h2>

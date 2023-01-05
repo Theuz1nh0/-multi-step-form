@@ -1,9 +1,12 @@
+// images
+import iconThankYou from '../assets/images/icon-thank-you.svg'
+
 function Thanks() {
 
     return (
         <div>
             <div>
-                <img src="./src/assets/images/icon-thank-you.svg" alt="" />
+                <img src={iconThankYou} alt="" />
             </div>
             <h1>Thank you!</h1>
             <p>
