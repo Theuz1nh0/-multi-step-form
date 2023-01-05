@@ -38,8 +38,14 @@ export function texts() {
         }
     ]
 
+    const plans = {
+        monthly: ['$9/mo', '$12/mo', '$15/mo'],
+        yearly: ['$90/yr', '$120/yr', '$150/yr']
+        }
+
     return {
         headerText: headerText,
-        arrayInformationsStep: arrayInformationsStep
+        arrayInformationsStep: arrayInformationsStep,
+        plans: plans
     }
 }

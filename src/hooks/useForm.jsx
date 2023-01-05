@@ -1,3 +1,4 @@
+// react
 import { useState } from "react";
 
 // function to switch the current page for the client to the next step when some button is clicked
@@ -10,7 +11,6 @@ export function useForm(steps) {
         if(i < 0 || i > steps.length) return
 
         setCurrentStep(i)
-        console.log(currentStep)
     }
 
     return {

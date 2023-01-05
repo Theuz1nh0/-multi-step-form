@@ -75,6 +75,7 @@ function App() {
                     </div>
                 </form>
             </main>
+            <div className="bottom-space"></div>
         </div>
     )
 }
