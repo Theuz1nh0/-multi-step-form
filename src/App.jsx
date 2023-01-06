@@ -10,18 +10,40 @@ import StepInformations from "./components/StepInformations"
 import './styles/App.css'
 
 // hooks
+import { useState } from "react"
 import { texts } from "./hooks/texts"
 import { useForm } from "./hooks/useForm"
 
+const formTemplate = {
+    name: '',
+    email: '',
+    number: '',
+    plan: '',
+    typePlan: "monthly",
+    services: {
+        service01: false,
+        service02: false,
+        service03: false
+    },
+}
+
 function App() {
+    const [data, setData] = useState(formTemplate)
+
     const { headerText, arrayInformationsStep } = texts()
+
+    const updateFielHandler = (key, value) => {
+        setData(prev => {
+            return {...prev, [key]: value}
+        })
+    }
 
     // get the pages of the steps
     const formComponents = [
-        <YourInfo />,
-        <YourPlan />,
-        <PickAddOns />,
-        <FinishingUp />,
+        <YourInfo data={data} updateFielHandler={updateFielHandler} />,
+        <YourPlan data={data} updateFielHandler={updateFielHandler} />,
+        <PickAddOns data={data} updateFielHandler={updateFielHandler} />,
+        <FinishingUp data={data} updateFielHandler={updateFielHandler} />,
         <Thanks />
     ]
 

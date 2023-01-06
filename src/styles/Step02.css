@@ -4,7 +4,7 @@
     padding: 1rem;
 }
 
-.form-container .current-plan {
+.form-container .clicked-style {
     border-color: var(--purplish-blue);
     background-color: var(--magnolia);
 
