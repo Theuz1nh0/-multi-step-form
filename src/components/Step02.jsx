@@ -15,32 +15,35 @@ import '../styles/Step02.css'
 function YourPlan({ data, updateFielHandler }) {
     const { plans } = texts();
 
+
     const changeTipePlan = () => {
-        if (data.typePlan == "monthly") {
-            updateFielHandler('typePlan', "yearly")
+        const n = data.plan.name == "arcade" ? 0 : data.plan.name == "advanced" ? 1 : 2
+        if (data.typePlan == "Monthly") {
+            updateFielHandler('typePlan', "Yearly")
         } else {
-            updateFielHandler('typePlan', "monthly")
+            updateFielHandler('typePlan', "Monthly")
         }
+        updateFielHandler("plan", { ...data.plan, value: data.typePlan == "Yearly" ? plans.monthly[n] : plans.yearly[n] })
     }
 
 
     //function to add a style to the container of the plan that the client clicked on
-    const IsChecked = (event) => {
-        const planId = event.target.id
-        updateFielHandler("plan", planId)
+    const IsChecked = (e, n) => {
+        const planId = e.target.id
+        updateFielHandler("plan", { ...data.plan, name: planId, value: data.typePlan == "Monthly" ? plans.monthly[n] : plans.yearly[n] })
     }
 
     return (
         // step02
         <div className="form-container">
-            <div className={`input relative${data.plan == "arcade" ? " clicked-style" : ""}`}>
+            <div className={`input relative${data.plan.name == "arcade" ? " clicked-style" : ""}`}>
                 <div className="radio-container">
                     <input
                         type="radio"
                         name="plan"
                         id="arcade"
-                        onChange={IsChecked}
-                        checked={data.plan == "arcade"}
+                        onChange={e => IsChecked(e, 0)}
+                        checked={data.plan.name == "arcade"}
                     />
                 </div>
                 <div className="radio-content">
@@ -50,24 +53,24 @@ function YourPlan({ data, updateFielHandler }) {
                     <div className="plan-informations">
                         <h2>Arcade</h2>
                         <span className="plan-value">
-                            {data.typePlan == "monthly" ? `$${plans.monthly[0]}/mo` : `$${plans.yearly[0]}/yr`}
+                            {data.typePlan == "Monthly" ? `$${plans.monthly[0]}/mo` : `$${plans.yearly[0]}/yr`}
                         </span>
 
                         <span className="yearly-discount">
-                            {data.typePlan != "monthly" ? '2 months free' : null}
+                            {data.typePlan != "Monthly" ? '2 months free' : null}
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div className={`input relative${data.plan == "advanced" ? ' clicked-style' : ''}`}>
+            <div className={`input relative${data.plan.name == "advanced" ? ' clicked-style' : ''}`}>
                 <div className="radio-container">
                     <input
                         type="radio"
                         name="plan"
                         id="advanced"
-                        onChange={IsChecked}
-                        checked={data.plan == "advanced"}
+                        onChange={e => IsChecked(e, 1)}
+                        checked={data.plan.name == "advanced"}
                     />
                 </div>
                 <div className="radio-content">
@@ -77,24 +80,24 @@ function YourPlan({ data, updateFielHandler }) {
                     <div className="plan-informations">
                         <h2>Advanced</h2>
                         <span className="plan-value">
-                            {data.typePlan == "monthly" ? `$${plans.monthly[1]}/mo` : `$${plans.yearly[1]}/yr`}
+                            {data.typePlan == "Monthly" ? `$${plans.monthly[1]}/mo` : `$${plans.yearly[1]}/yr`}
                         </span>
 
                         <span className="yearly-discount">
-                            {data.typePlan != "monthly" ? '2 months free' : null}
+                            {data.typePlan != "Monthly" ? '2 months free' : null}
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div className={`input relative${data.plan == "pro" ? ' clicked-style' : ''}`}>
+            <div className={`input relative${data.plan.name == "pro" ? ' clicked-style' : ''}`}>
                 <div className="radio-container">
                     <input
                         type="radio"
                         name="plan"
                         id="pro"
-                        onChange={IsChecked}
-                        checked={data.plan == "pro"}
+                        onChange={e => IsChecked(e, 2)}
+                        checked={data.plan.name == "pro"}
                     />
                 </div>
                 <div className="radio-content">
@@ -104,11 +107,11 @@ function YourPlan({ data, updateFielHandler }) {
                     <div className="plan-informations">
                         <h2>Pro</h2>
                         <span className="plan-value">
-                            {data.typePlan == "monthly" ? `$${plans.monthly[2]}/mo` : `$${plans.yearly[2]}/yr`}
+                            {data.typePlan == "Monthly" ? `$${plans.monthly[2]}/mo` : `$${plans.yearly[2]}/yr`}
                         </span>
 
                         <span className="yearly-discount">
-                            {data.typePlan != "monthly" ? '2 months free' : null}
+                            {data.typePlan != "Monthly" ? '2 months free' : null}
                         </span>
                     </div>
                 </div>
@@ -116,13 +119,13 @@ function YourPlan({ data, updateFielHandler }) {
 
             {/* toggle button, switch between monthly plan and annual plan */}
             <div className="toggle-option">
-                <span style={{ color: data.typePlan == "monthly" ? 'var(--cool-gray)' : 'var(--marine-blue)' }}>Monthly</span>
+                <span style={{ color: data.typePlan == "Monthly" ? 'var(--cool-gray)' : 'var(--marine-blue)' }}>Monthly</span>
                 <span
-                    className={data.typePlan == "monthly" ? "switch-button" : "switch-button  cliked"}
+                    className={data.typePlan == "Monthly" ? "switch-button" : "switch-button  cliked"}
                     onClick={changeTipePlan}
                 ></span>
                 <span
-                    style={{ color: data.typePlan == "yearly" ? 'var(--cool-gray)' : 'var(--marine-blue)' }}
+                    style={{ color: data.typePlan == "Yearly" ? 'var(--cool-gray)' : 'var(--marine-blue)' }}
                 >Yearly</span>
             </div>
         </div>

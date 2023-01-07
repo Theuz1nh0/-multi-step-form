@@ -48,6 +48,8 @@
 
     padding: 2rem 1.5rem;
     border-radius: .7rem;
+
+    box-shadow: 0 2rem 2rem -10px var(--light-gray);
 }
 
 .main-container .header-container h1 {
@@ -93,6 +95,16 @@
     border: none;
     font-weight: 700;
 
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.actions .btn-go-back:hover {
+    color: var(--marine-blue);
+}
+
+.actions .btn-next-step:hover {
+    background-color: hsl(213, 96%, 25%);
 }
 
 /* bottom-space */

@@ -9,14 +9,14 @@ function PickAddOns({ data, updateFielHandler }) {
 
     return (
         <div className="form-container">
-            <div className={`input input-flex${data.services.service01 == true ? " clicked-style" : ""}`}>
+            <div className={`input input-flex${data.services.service01.isChecked == true ? " clicked-style" : ""}`}>
                 <div className="input-checkbox">
                     <input
                         type="checkbox"
                         name="online service"
                         id="onService"
-                        onChange={e => updateFielHandler("services", { ...data.services, service01: e.target.checked })}
-                        checked={data.services.service01}
+                        onChange={e => updateFielHandler("services", {...data.services, service01: {...data.services.service01, isChecked: e.target.checked}})}
+                        checked={data.services.service01.isChecked}
                     />
 
                     <span className="checkmark"></span>
@@ -30,20 +30,20 @@ function PickAddOns({ data, updateFielHandler }) {
 
                     <div className="service-value">
                         <span>
-                            {data.typePlan == "monthly" ? `+$${services.monthly[0]}/mo` : `+$${services.yearly[0]}/yr`}
+                            {data.typePlan == "Monthly" ? `+$${services.monthly[0]}/mo` : `+$${services.yearly[0]}/yr`}
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div className={`input input-flex${data.services.service02 == true ? " clicked-style" : ""}`}>
+            <div className={`input input-flex${data.services.service02.isChecked == true ? " clicked-style" : ""}`}>
                 <div className="input-checkbox">
                     <input
                         type="checkbox"
                         name="larger storage"
                         id="larStorage"
-                        onChange={e => updateFielHandler("services", { ...data.services, service02: e.target.checked })}
-                        checked={data.services.service02}
+                        onChange={e => updateFielHandler("services", {...data.services, service02: {...data.services.service02, isChecked: e.target.checked}})}
+                        checked={data.services.service02.isChecked}
                     />
 
                     <span className="checkmark"></span>
@@ -57,21 +57,21 @@ function PickAddOns({ data, updateFielHandler }) {
 
                     <div className="service-value">
                         <span>
-                            {data.typePlan == "monthly" ? `+$${services.monthly[1]}/mo` : `+$${services.yearly[1]}/yr`}
+                            {data.typePlan == "Monthly" ? `+$${services.monthly[1]}/mo` : `+$${services.yearly[1]}/yr`}
                         </span>
 
                     </div>
                 </div>
             </div>
 
-            <div className={`input input-flex${data.services.service03 == true ? " clicked-style" : ""}`}>
+            <div className={`input input-flex${data.services.service03.isChecked == true ? " clicked-style" : ""}`}>
                 <div className="input-checkbox">
                     <input
                         type="checkbox"
                         name="customizable profile"
                         id="customProfile"
-                        onChange={e => updateFielHandler("services", { ...data.services, service03: e.target.checked })}
-                        checked={data.services.service03}
+                        onChange={e => updateFielHandler("services", {...data.services, service03: {...data.services.service03, isChecked: e.target.checked}})}
+                        checked={data.services.service03.isChecked}
                     />
 
                     <span className="checkmark"></span>
@@ -85,7 +85,7 @@ function PickAddOns({ data, updateFielHandler }) {
 
                     <div className="service-value">
                         <span>
-                            {data.typePlan == "monthly" ? `+$${services.monthly[2]}/mo` : `+$${services.yearly[2]}/yr`}
+                            {data.typePlan == "Monthly" ? `+$${services.monthly[2]}/mo` : `+$${services.yearly[2]}/yr`}
                         </span>
                     </div>
                 </div>

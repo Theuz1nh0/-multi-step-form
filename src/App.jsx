@@ -18,12 +18,24 @@ const formTemplate = {
     name: '',
     email: '',
     number: '',
-    plan: '',
-    typePlan: "monthly",
+    plan: {
+        name: '',
+        value: '',
+    },
+    typePlan: "Monthly",
     services: {
-        service01: false,
-        service02: false,
-        service03: false
+       service01: {
+            name: 'Online service',
+            isChecked: false
+        },
+       service02: {
+            name: 'Larger storage',
+            isChecked: false
+        },
+       service03: {
+            name: 'Customizable profile',
+            isChecked: false
+        }
     },
 }
 
@@ -34,7 +46,7 @@ function App() {
 
     const updateFielHandler = (key, value) => {
         setData(prev => {
-            return {...prev, [key]: value}
+            return { ...prev, [key]: value }
         })
     }
 
@@ -43,14 +55,15 @@ function App() {
         <YourInfo data={data} updateFielHandler={updateFielHandler} />,
         <YourPlan data={data} updateFielHandler={updateFielHandler} />,
         <PickAddOns data={data} updateFielHandler={updateFielHandler} />,
-        <FinishingUp data={data} updateFielHandler={updateFielHandler} />,
+        <FinishingUp data={data} />,
         <Thanks />
     ]
 
-    const { currentStep, currentComponent, changeStep, isLastStep, isFarstStep } = useForm(formComponents)
+    const { currentStep, currentComponent, changeStep, isFarstStep } = useForm(formComponents)
 
     // to keep the 'Next Step' button in the same place
     const styleToActions = isFarstStep ? 'end' : 'space-between'
+    const displayOff = currentStep != formComponents.length - 1 ? 'flex' : 'none'
 
     return (
         <div>
@@ -74,8 +87,8 @@ function App() {
                 </div>
                 <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
                     <div className="inputs-container">{currentComponent}</div>
-                    <div className="actions" style={{ justifyContent: styleToActions }}>
-                        {!isFarstStep && (
+                    <div className="actions" style={{ justifyContent: styleToActions, display: displayOff }}>
+                        {!isFarstStep && currentStep != formComponents.length - 1 ? (
                             <button
                                 type="button"
                                 className="btn-go-back"
@@ -83,17 +96,17 @@ function App() {
                             >
                                 <span>Go Back</span>
                             </button>
-                        )}
+                        ) : ''}
 
-                        {!isLastStep ? (
+                        {currentStep < formComponents.length -2 ? (
                             <button type="submit" className="btn-next-step">
                                 <span>Next Step</span>
                             </button>
-                        ) : (
-                            <button type="button" className="btn-next-step">
-                                <span>Next Step</span>
+                        ) : currentStep == formComponents.length - 2 ? (
+                            <button type="submit" className="btn-next-step">
+                                <span>Confirm</span>
                             </button>
-                        )}
+                        ) : ''}
                     </div>
                 </form>
             </main>

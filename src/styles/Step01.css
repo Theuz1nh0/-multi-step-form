@@ -20,6 +20,8 @@
     border: 1px solid var(--light-gray);
     border-radius: .3rem;
 
+    cursor: pointer;
+
     padding: .75rem 1rem;
     font-weight: 700;
 
@@ -27,6 +29,11 @@
 }
 
 .form-container .input:focus {
+    border: 1px solid var(--purplish-blue);
+    outline: 1px solid var(--purplish-blue);
+}
+
+.form-container .input:hover {
     border: 1px solid var(--purplish-blue);
     outline: 1px solid var(--purplish-blue);
 }
