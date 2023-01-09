@@ -1,6 +1,3 @@
-// react
-import { useState } from 'react';
-
 // hooks
 import { texts } from '../hooks/texts'
 
@@ -15,7 +12,8 @@ import '../styles/Step02.css'
 function YourPlan({ data, updateFielHandler }) {
     const { plans } = texts();
 
-
+    // function to change the current plan that the customer has chosen
+    // and add it to the form template
     const changeTipePlan = () => {
         const n = data.plan.name == "arcade" ? 0 : data.plan.name == "advanced" ? 1 : 2
         if (data.typePlan == "Monthly") {

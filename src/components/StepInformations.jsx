@@ -6,6 +6,7 @@ function StepInformations(props) {
     const name = props.array.name
     const step = props.step + 1
 
+    // function to highlight current step number
     const verifyStep = () => {
         if (num === step) {
             return 'step-number current-step'

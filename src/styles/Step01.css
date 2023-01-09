@@ -1,4 +1,4 @@
-/* form-container */
+/* form-container step01*/
 .form-container {
     display: flex;
     flex-direction: column;
@@ -41,4 +41,28 @@
 .input-container .input,
 .input-container .input::placeholder {
     color: var(--cool-gray);
+}
+
+/* input-container when invalid */
+
+.input-container .inputInvalid {
+    border-color: var(--strawberry-red);
+}
+
+.form-container .inputInvalid:focus {
+    border: 1px solid var(--strawberry-red);
+    outline: 1px solid var(--strawberry-red);
+}
+
+.form-container .inputLabel {
+    position: relative;
+}
+
+.input-container .beforeInputInvalid::before {
+    content: 'This field is required';
+    font-size: .9rem;
+    color: var(--strawberry-red);
+
+    position: absolute;
+    right: 0;
 }

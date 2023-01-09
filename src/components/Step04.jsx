@@ -4,7 +4,7 @@ import { texts } from "../hooks/texts"
 //styles
 import '../styles/Step04.css'
 
-function FinishingUp({ data }) {
+function FinishingUp({ data, changeStep }) {
     const { services } = texts()
 
     const Arcade = data.plan.name == "arcade" ? 'Arcade' : false
@@ -14,6 +14,7 @@ function FinishingUp({ data }) {
     const planMonthly = data.typePlan == 'Monthly'
     const title = Arcade || Advanced || Pro
 
+    // function to calculate and display the final value of the plan and services
     const valueService = () => {
         const service01 = data.services.service01.isChecked
         const service02 = data.services.service02.isChecked
@@ -42,7 +43,7 @@ function FinishingUp({ data }) {
                             {`${title} (${data.typePlan})`}
                         </h2>
 
-                        <a href="#">Change</a>
+                        <a href="#" onClick={() => changeStep(1)}>Change</a>
                     </div>
                     <div className="final-value">
                         <span>

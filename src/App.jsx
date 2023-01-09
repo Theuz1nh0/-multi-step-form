@@ -19,8 +19,8 @@ const formTemplate = {
     email: '',
     number: '',
     plan: {
-        name: '',
-        value: '',
+        name: 'arcade',
+        value: 9,
     },
     typePlan: "Monthly",
     services: {
@@ -59,7 +59,7 @@ function App() {
         <Thanks />
     ]
 
-    const { currentStep, currentComponent, changeStep, isFarstStep } = useForm(formComponents)
+    const { currentStep, currentComponent, changeStep, isFarstStep } = useForm(formComponents, data)
 
     // to keep the 'Next Step' button in the same place
     const styleToActions = isFarstStep ? 'end' : 'space-between'

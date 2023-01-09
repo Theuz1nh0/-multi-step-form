@@ -1,10 +1,13 @@
 // react
 import { useState } from "react";
 
+import FinishingUp from "../components/Step04";
+
 // function to switch the current page for the client to the next step when some button is clicked
-export function useForm(steps) {
+export function useForm(steps, data) {
     const [currentStep, setCurrentStep] = useState(0);
 
+    // function to change current step when submit button is clicked
     const changeStep = (i, e) => {
         if(e) e.preventDefault()
 
@@ -12,6 +15,8 @@ export function useForm(steps) {
 
         setCurrentStep(i)
     }
+
+    steps[3] = <FinishingUp data={data} changeStep={changeStep}/>
 
     return {
         currentStep,
