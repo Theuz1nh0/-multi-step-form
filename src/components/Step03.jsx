@@ -8,7 +8,7 @@ function PickAddOns({ data, updateFielHandler }) {
     const { services } = texts()
 
     return (
-        <div className="form-container">
+        <div className="form-container new-gap">
             <div className={`input input-flex${data.services.service01.isChecked == true ? " clicked-style" : ""}`}>
                 <div className="input-checkbox">
                     <input

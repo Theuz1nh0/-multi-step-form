@@ -34,83 +34,85 @@ function YourPlan({ data, updateFielHandler }) {
     return (
         // step02
         <div className="form-container">
-            <div className={`input relative${data.plan.name == "arcade" ? " clicked-style" : ""}`}>
-                <div className="radio-container">
-                    <input
-                        type="radio"
-                        name="plan"
-                        id="arcade"
-                        onChange={e => IsChecked(e, 0)}
-                        checked={data.plan.name == "arcade"}
-                    />
-                </div>
-                <div className="radio-content">
-                    <div>
-                        <img src={iconArcade} alt="icon arcade" />
+            <div className='options-plans'>
+                <div className={`input relative${data.plan.name == "arcade" ? " clicked-style" : ""}`}>
+                    <div className="radio-container">
+                        <input
+                            type="radio"
+                            name="plan"
+                            id="arcade"
+                            onChange={e => IsChecked(e, 0)}
+                            checked={data.plan.name == "arcade"}
+                        />
                     </div>
-                    <div className="plan-informations">
-                        <h2>Arcade</h2>
-                        <span className="plan-value">
-                            {data.typePlan == "Monthly" ? `$${plans.monthly[0]}/mo` : `$${plans.yearly[0]}/yr`}
-                        </span>
+                    <div className="radio-content">
+                        <div>
+                            <img src={iconArcade} alt="icon arcade" />
+                        </div>
+                        <div className="plan-informations">
+                            <h2>Arcade</h2>
+                            <span className="plan-value">
+                                {data.typePlan == "Monthly" ? `$${plans.monthly[0]}/mo` : `$${plans.yearly[0]}/yr`}
+                            </span>
 
-                        <span className="yearly-discount">
-                            {data.typePlan != "Monthly" ? '2 months free' : null}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div className={`input relative${data.plan.name == "advanced" ? ' clicked-style' : ''}`}>
-                <div className="radio-container">
-                    <input
-                        type="radio"
-                        name="plan"
-                        id="advanced"
-                        onChange={e => IsChecked(e, 1)}
-                        checked={data.plan.name == "advanced"}
-                    />
-                </div>
-                <div className="radio-content">
-                    <div>
-                        <img src={iconAdvanced} alt="icon advanced" />
-                    </div>
-                    <div className="plan-informations">
-                        <h2>Advanced</h2>
-                        <span className="plan-value">
-                            {data.typePlan == "Monthly" ? `$${plans.monthly[1]}/mo` : `$${plans.yearly[1]}/yr`}
-                        </span>
-
-                        <span className="yearly-discount">
-                            {data.typePlan != "Monthly" ? '2 months free' : null}
-                        </span>
+                            <span className="yearly-discount">
+                                {data.typePlan != "Monthly" ? '2 months free' : null}
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className={`input relative${data.plan.name == "pro" ? ' clicked-style' : ''}`}>
-                <div className="radio-container">
-                    <input
-                        type="radio"
-                        name="plan"
-                        id="pro"
-                        onChange={e => IsChecked(e, 2)}
-                        checked={data.plan.name == "pro"}
-                    />
-                </div>
-                <div className="radio-content">
-                    <div>
-                        <img src={iconPro} alt="icon pro" />
+                <div className={`input relative${data.plan.name == "advanced" ? ' clicked-style' : ''}`}>
+                    <div className="radio-container">
+                        <input
+                            type="radio"
+                            name="plan"
+                            id="advanced"
+                            onChange={e => IsChecked(e, 1)}
+                            checked={data.plan.name == "advanced"}
+                        />
                     </div>
-                    <div className="plan-informations">
-                        <h2>Pro</h2>
-                        <span className="plan-value">
-                            {data.typePlan == "Monthly" ? `$${plans.monthly[2]}/mo` : `$${plans.yearly[2]}/yr`}
-                        </span>
+                    <div className="radio-content">
+                        <div>
+                            <img src={iconAdvanced} alt="icon advanced" />
+                        </div>
+                        <div className="plan-informations">
+                            <h2>Advanced</h2>
+                            <span className="plan-value">
+                                {data.typePlan == "Monthly" ? `$${plans.monthly[1]}/mo` : `$${plans.yearly[1]}/yr`}
+                            </span>
 
-                        <span className="yearly-discount">
-                            {data.typePlan != "Monthly" ? '2 months free' : null}
-                        </span>
+                            <span className="yearly-discount">
+                                {data.typePlan != "Monthly" ? '2 months free' : null}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={`input relative${data.plan.name == "pro" ? ' clicked-style' : ''}`}>
+                    <div className="radio-container">
+                        <input
+                            type="radio"
+                            name="plan"
+                            id="pro"
+                            onChange={e => IsChecked(e, 2)}
+                            checked={data.plan.name == "pro"}
+                        />
+                    </div>
+                    <div className="radio-content">
+                        <div>
+                            <img src={iconPro} alt="icon pro" />
+                        </div>
+                        <div className="plan-informations">
+                            <h2>Pro</h2>
+                            <span className="plan-value">
+                                {data.typePlan == "Monthly" ? `$${plans.monthly[2]}/mo` : `$${plans.yearly[2]}/yr`}
+                            </span>
+
+                            <span className="yearly-discount">
+                                {data.typePlan != "Monthly" ? '2 months free' : null}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

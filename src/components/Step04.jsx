@@ -31,7 +31,7 @@ function FinishingUp({ data, changeStep }) {
 
         const total = planValue + service01IsChecked01 + service01IsChecked02 + service01IsChecked03
 
-        return `+$${total}/${planMonthly ? 'mo' : 'yr'}`
+        return `$${total}/${planMonthly ? 'mo' : 'yr'}`
     }
 
     return (

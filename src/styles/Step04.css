@@ -1,5 +1,4 @@
 /* final-informations step04*/
-
 .final-informations {
     background-color: var(--alabaster);
     padding: 1rem;
@@ -31,6 +30,10 @@
 .final-plan-informations .title-step04 a {
     color: var(--cool-gray);
     font-size: .9rem;
+}
+
+.final-plan-informations .title-step04 a:hover {
+    color: var(--purplish-blue);
 }
 
 .final-plan-informations .final-value span {
@@ -78,5 +81,41 @@
 }
 
 .form-container .total-informations span:last-child {
+    font-weight: 700;
     color: var(--purplish-blue);
+}
+
+@media only screen and (min-width: 768px) {
+
+    /* final-informations step04*/
+    .final-informations {
+        padding: 1.5rem;
+    }
+
+    .final-informations hr {
+        margin: 1.5rem 0;
+    }
+
+    .final-plan-informations .title-step04 h2 {
+        font-size: 1rem;
+    }
+
+    .final-services-informations-container {
+        gap: 1.5rem;
+    }
+
+    /* total-informations */
+    .form-container .total-informations {
+        padding: 0 1.5rem;
+    }
+
+    .form-container .total-informations span:last-child {
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .final-informations .final-plan-informations {
+        gap: 14rem;
+    }
 }

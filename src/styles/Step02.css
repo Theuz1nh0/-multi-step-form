@@ -4,6 +4,12 @@
     padding: 1rem;
 }
 
+.options-plans {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
 .form-container .clicked-style {
     border-color: var(--purplish-blue);
     background-color: var(--magnolia);
@@ -102,4 +108,32 @@
 
 .toggle-option .cliked::before {
     transform: translateX(150%);
+}
+
+@media only screen and (min-width: 768px) {
+    /* Step02 */
+    .options-plans {
+        flex-direction: row;
+    }
+
+    .options-plans .radio-content {
+        flex-direction: column;
+        gap: 1.625rem;
+        width: 5.2rem;
+    }
+
+    .options-plans .relative {
+        padding-right: 1.8125rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    /* Step02 */
+    .options-plans .radio-content {
+        gap: 2.625rem;
+    }
+
+    .options-plans .relative {
+        padding-right: 2.8125rem;
+    }
 }
